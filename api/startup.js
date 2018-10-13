@@ -19,21 +19,17 @@ app.post("/initialize", function(req, res) {
 app.post("/start", function(req, res) {
     var information = new Object();
     //res.send(req.body);
-    console.log(req.body);
     const body = req.body;
-    if (body.request.intent.name == "start_new") {
-        information.text = "Where should we get started?";
-        information.which = "start";
+    if (body.intent.name == "start_new") {
+        information.outputSpeech = "Where should we get started?";
         res.send(JSON.stringify(information));
     }
-    else if (body.request.intent.name == "resume_existing") {
-        information.which = "resume";
-        information.text =  "Which session should we resume?";
+    else if (body.intent.name == "resume_existing") {
+        information.outputSpeech =  "Which session should we resume?";
         res.send(JSON.stringify(information));
     }
     else {
-        information.which = "reprompt";
-        information.text = "I didn't understand that. Please try again.";
+        information.outputSpeech = "I didn't understand that. Please try again.";
         res.send(JSON.stringify(information));
     }
 });
