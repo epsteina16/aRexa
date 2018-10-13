@@ -2,27 +2,40 @@ const express = require('express');
 const app = express();
 
 const mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
 //mongoose.connect('mongodb://localhost/arexa');
 
-const song_controller = require('./api/song_controller');
-app.use("/songs", song_controller);
+//const song_controller = require('./api/song_controller');
+//app.use("/songs", song_controller);
 
 app.post("/initialize", function(req, res) {
-    res.outputSpeech.text = "Welcome to aRexa! Would you like to start a new session or resume from an existing session?";
+    res.send("Welcome to aRexa! Would you like to start a new session or resume from an existing session?");
 });
 
 app.post("/start", function(req, res) {
-    if (req.request.intent.name == "start_new") {
-        res.outputSpeech.text = "Where should we get started?";
-        res.which = "start";
+    var information = new Object();
+    //res.send(req.body);
+    console.log(req.body);
+    const body = req.body;
+    if (body.request.intent.name == "start_new") {
+        information.text = "Where should we get started?";
+        information.which = "start";
+        res.send(JSON.stringify(information));
     }
-    else if (req.request.intent.name == "resume_existing") {
-        res.which = "resume";
-        res.outputSpeech.text = "Which session should we resume?";
+    else if (body.request.intent.name == "resume_existing") {
+        information.which = "resume";
+        information.text =  "Which session should we resume?";
+        res.send(JSON.stringify(information));
     }
-    else 
-        res.which = "reprompt";
-        res.outputSpeech.text = "I didn't understand that. Please try again.";
+    else {
+        information.which = "reprompt";
+        information.text = "I didn't understand that. Please try again.";
+        res.send(JSON.stringify(information));
+    }
 });
 
 

@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/epsteina16/aRexa#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongodb": "^3.1.8",
     "mongoose": "^5.3.3"
