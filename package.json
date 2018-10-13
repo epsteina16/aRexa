@@ -1,0 +1,27 @@
+{
+  "name": "arexa",
+  "version": "1.0.0",
+  "description": "Alexa skill for spotify recommendations",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epsteina16/aRexa.git"
+  },
+  "keywords": [
+    "aRexa"
+  ],
+  "author": "Aaron Epstein, Miko Hadeshian, Josh Simani, Nikhil Bhatia-Lin, Charlie Caron",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epsteina16/aRexa/issues"
+  },
+  "homepage": "https://github.com/epsteina16/aRexa#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongodb": "^3.1.8",
+    "mongoose": "^5.3.3"
+  }
+}
