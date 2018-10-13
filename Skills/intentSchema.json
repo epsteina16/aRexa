@@ -1,0 +1,28 @@
+{
+	"intents" : [ {
+		"intent": "InitializeIntent"
+	}, {
+		"intent": "StartIntent"
+	}, {
+		"intent": "LikeIntent"
+	}, {
+		"intent": "DislikeIntent"
+	}, {
+		"intent": "NextIntent"
+	}, {
+		"intent": "PlaylistIntent"
+	}, {
+		"intent": "AMAZON.YesIntent"
+	}, {
+		"intent": "AMAZON.NoIntent"
+	}, {
+		"intent": "AMAZON.HelpIntent"
+	}, {
+		"intent": "AMAZON.StopIntent"
+	}, {
+		"intent": "AMAZON.CancelIntent"
+	} 
+
+
+	]
+}
