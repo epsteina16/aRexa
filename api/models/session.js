@@ -2,7 +2,9 @@ const mongoose = require("mongoose")
 
 const session = mongoose.Schema({
 	userId: string,
-	sessionId: string,
+	sessionId: {type: string, unique: true}
+	sessionName: string,
+	playlistId: string,
 	danceability: {min: number, max: number},
 	energy: {min: number, max: number},
 	key: {min: number, max: number},
@@ -14,7 +16,9 @@ const session = mongoose.Schema({
 	liveness: {min: number, max: number},
 	valence: {min: number, max: number},
 	tempo: {min: number, max: number},
-	time_signature: {min: number, max: number}
+	time_signature: {min: number, max: number},
+	popularity: {min: number, max: number},
+	songList: [string]
 });
 
 module.exports = mongoose.model("Session", session);

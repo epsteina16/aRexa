@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const songs = mongoose.Schema({
-	sessionId: string,
+	sessionId: {type: string, unique: true},
 	userId: string,
 	songs: [{
 		songId: string,
@@ -17,6 +17,7 @@ const songs = mongoose.Schema({
 		valence: number,
 		tempo: number,
 		time_signature: number,
+		popularity: number,
 		like: boolean
 	}]
 	//list of songs
