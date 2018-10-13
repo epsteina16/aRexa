@@ -140,7 +140,7 @@ router.post('/dislike', function(req, res) {
 			const track_id = data.item.id;
 			const track_uri = data.item.uri;
 			const popularity = data.item.popularity;
-			const playlist_id;
+			var playlist_id = undefined;
 
 			//get track audio features
 
@@ -185,11 +185,12 @@ router.post('/dislike', function(req, res) {
 						}
 					});
 				}
-				var new_options {
-					url: "https://api.spotify.com/v1/playlists/" + playlist_id + "/tracks",
-	  				headers: {
-	    			'Authorization': spotifyToken
-	  				}
+				var new_options = {
+				  url: "https://api.spotify.com/v1/playlists/" + playlist_id + "/tracks",
+				  headers: {
+				    'Authorization': 'Bearer ' + authToken
+				  },
+				  json: true
 				};
 				var tracks = {tracks: []};
 				for (var i = req.body.session.playlist.indexOf(track_uri); i < req.body.session.playlist.length(); i++) {
