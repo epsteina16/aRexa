@@ -1,24 +1,24 @@
 const mongoose = require("mongoose")
 
 const songs = mongoose.Schema({
-	sessionId: {type: string, unique: true},
-	userId: string,
+	sessionId: {type: String, unique: true},
+	userId: String,
 	songs: [{
-		songId: string,
-		danceability: number,
-		energy: number,
-		key: number,
-		loudness: number,
-		mode: number,
-		speechiness: number,
-		acousticness: number,
-		instrumentalness: number,
-		liveness: number,
-		valence: number,
-		tempo: number,
-		time_signature: number,
-		popularity: number,
-		like: boolean
+		songId: String,
+		danceability: Number,
+		energy: Number,
+		key: Number,
+		loudness: Number,
+		mode: Number,
+		speechiness: Number,
+		acousticness: Number,
+		instrumentalness: Number,
+		liveness: Number,
+		valence: Number,
+		tempo: Number,
+		time_signature: Number,
+		popularity: Number,
+		like: Boolean
 	}]
 	//list of songs
 });

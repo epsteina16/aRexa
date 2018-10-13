@@ -1,20 +1,31 @@
 const express = require("express");
 const request = require("request");
+const router = express.Router();
 
-//TODO: get spotify token from chad
-const spotifyToken = "1111";
+const spotifyToken = require("./oauth");
+var authToken = undefined;
+
+router.use(function(req, res, next) {
+	spotifyToken().then(function(v) {
+		authToken = v;
+		console.log(authToken)
+		next();
+	});
+})
 
 
 const Songs = require("./models/songs");
 const Session = require("./models/session");
 
-const router = express.Router();
+const songActions = require("./song_action_controller");
 
 router.use('/', function(req, res, next) {
 	console.log("In songs");
 
 	next();
 });
+
+router.use(songActions);
 
 
 //like endpoint
@@ -25,8 +36,9 @@ router.post('/like', function(req, res) {
 	var options = {
 	  url: "https://api.spotify.com/v1/me/player/currently-playing",
 	  headers: {
-	    'Authorization': spotifyToken
-	  }
+	    'Authorization': 'Bearer ' + authToken
+	  },
+	  json: true
 	};
 
 	request(options, function(error, response, body) {
@@ -35,7 +47,7 @@ router.post('/like', function(req, res) {
 			const track_id = data.item.id;
 			const track_uri = data.item.uri;
 			const popularity = data.item.popularity;
-			const playlist_id;
+			const playlist_id = undefined;
 
 			//get track audio features
 
@@ -115,10 +127,11 @@ router.post('/dislike', function(req, res) {
 
 
 	var options = {
-	  url: "https://api.spotify.com/v1/me/player/currently-playing",
+	  url: "https://api.spotify.com/v1/me/player/next",
 	  headers: {
-	    'Authorization': spotifyToken
-	  }
+	    'Authorization': 'Bearer ' + authToken
+	  },
+	  json: true
 	};
 
 	request(options, function(error, response, body) {
