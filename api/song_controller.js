@@ -1,8 +1,7 @@
 const express = require("express");
 const request = require("request");
 
-//TODO: get spotify token from chad
-const spotifyToken = "1111";
+const spotifyToken = require("oath").headers.Authorization;
 
 
 const Songs = require("./models/songs");
