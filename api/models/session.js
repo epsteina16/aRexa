@@ -18,7 +18,10 @@ const session = mongoose.Schema({
 	tempo: {min: number, max: number},
 	time_signature: {min: number, max: number},
 	popularity: {min: number, max: number},
-	songList: [string]
+	songList: [string],
+	artistList: [string],
+	genreList: [string],
+	playlist: [string]
 });
 
 module.exports = mongoose.model("Session", session);
